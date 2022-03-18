@@ -1,0 +1,3 @@
+/ip dhcp-client
+add add-default-route=no disabled=no interface=ether1-UMUM
+add add-default-route=no disabled=no interface=ether2-GAME

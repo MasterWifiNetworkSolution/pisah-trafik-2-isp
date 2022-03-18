@@ -1,0 +1,6 @@
+/interface ovpn-client
+add connect-to=isihost mac-address=isimacaddress mode=ethernet \
+    name=ovpn-masterremote password=isipassword port=isiport user=isiuser
+
+/tool netwatch
+add host=192.168.195.1

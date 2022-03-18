@@ -1,0 +1,5 @@
+/interface bridge port
+add bridge=hotspot interface=ether4-Hotspot
+add bridge=hotspot interface=ether5-Hotspot
+/interface detect-internet
+set detect-interface-list=all

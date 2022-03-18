@@ -1,0 +1,6 @@
+/interface wireless
+set [ find default-name=wlan1 ] band=2ghz-b/g/n mode=ap-bridge name=\
+    wifi-hotspot radio-name=masternet ssid=MASTERWIFI.NET wps-mode=disabled
+
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MASTERWIFI

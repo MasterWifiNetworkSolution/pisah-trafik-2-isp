@@ -1,0 +1,119 @@
+/ip firewall raw
+add action=accept chain=prerouting content=shoope.co.id dst-address-list=\
+    "IP MENGGUNAKAN PORT RANDOM" in-interface=hotspot
+add action=add-dst-to-address-list address-list=youtube.com \
+    address-list-timeout=1d chain=prerouting comment="YOUTUBE MASTER" \
+    content=googlevideo.com dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=youtube.com \
+    address-list-timeout=1d chain=prerouting comment="YOUTUBE MASTER" \
+    content=gvt2.com dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=youtube.com \
+    address-list-timeout=1d chain=prerouting comment="YOUTUBE MASTER" \
+    content=youtube.com dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=youtube.com \
+    address-list-timeout=1d chain=prerouting comment="YOUTUBE MASTER" \
+    content=googleapis.com dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=youtube.com \
+    address-list-timeout=1d chain=prerouting comment="YOUTUBE MASTER" \
+    content=ggpht.com dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=youtube.com \
+    address-list-timeout=1d chain=prerouting comment="YOUTUBE MASTER" \
+    content=ytimg.com dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="INSTAGRAM MASTER" content=.cdninstagram.com \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="INSTAGRAM MASTER" content=\
+    scontent-sin6-2.cdninstagram.com dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="INSTAGRAM MASTER" content=.instagram.com \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="WHATSAPP MASTER" content=.whatsapp.net \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="WHATSAPP MASTER" content=.whatsapp.com \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="FACEBBOK MASTER" content=.facebook.com \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="FACEBBOK MASTER" content=.facebook.net \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="FACEBBOK MASTER" content=.fbcdn.net \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="TWITTER MASTER" content=.twitter.com \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="TWITTER MASTER" content=twitter.com \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="TWITTER MASTER" content=.twimg.com \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="TELEGRAM MASTER" content=.telegram.org \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="TELEGRAM MASTER" content=telegram.org \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list=sosmed address-list-timeout=\
+    1d chain=prerouting comment="TIKTOK MASTER" content=tiktokcdn.com \
+    dst-address-list="!IP LOCAL"
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="APEX LEGENDS MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=\
+    1024-1124,3216,9960-9969,18000,18060,18120,27900,28910,29900 protocol=tcp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="AOV MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=10001-10094 protocol=tcp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="AOV MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=10101-10201,10080-10110,17000-18000 \
+    protocol=udp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="APEX LEGENDS MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=1024-1124,18000,29900,37000-40000 \
+    protocol=udp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="FREE FIRE MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=\
+    7680,39698,39779,7006,14000,20561,39779,39003,8001,39800,8001 protocol=\
+    tcp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="PUBG MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=7889,10012,17500,18081 protocol=tcp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="PUBG MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=\
+    8011,9030,10010-10650,11000-14000,17000,20000,20001,20002 protocol=tcp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="FREE FIRE MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=\
+    20001,1900,10001,7008,10000-10009,17000,8008,7008 protocol=udp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="MOBILE LEGENDS MASTER" \
+    dst-address-list="!IP LOCAL" dst-port="38392,30106,30102,5000-5508,5551-55\
+    58,5601-5608,5651-5658,30097-30147,9000-9010" protocol=tcp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="COD MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=3013,18082,65010,65050 protocol=tcp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="COD MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=7500-7650 protocol=udp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment=\
+    "EFOOTBALL 2021 PES MASTER" dst-address-list="!IP LOCAL" dst-port=\
+    27015-27030,27036-27037 protocol=tcp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment=\
+    "EFOOTBALL 2021 PES MASTER" dst-address-list="!IP LOCAL" dst-port=\
+    4380,5730-5731,5739,27000-27031,27036 protocol=udp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="COC MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=9330-9340 protocol=tcp
+add action=add-dst-to-address-list address-list="IP GAME ONLINE" \
+    address-list-timeout=1d chain=prerouting comment="MOBILE LEGENDS MASTER" \
+    dst-address-list="!IP LOCAL" dst-port=\
+    5000-5200,5500-5700,8001,30000-30300,9000-9010 protocol=udp

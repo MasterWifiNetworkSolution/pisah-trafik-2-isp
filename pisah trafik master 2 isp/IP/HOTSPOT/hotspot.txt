@@ -1,0 +1,23 @@
+/ip hotspot profile
+set [ find default=yes ] dns-name=masterwifi.net hotspot-address=20.20.20.1 \
+    html-directory=hotspot login-by=http-chap,http-pap,mac-cookie name=\
+    admin
+add dns-name=masterwifi.net hotspot-address=20.20.20.1 html-directory=\
+    hotspot login-by=http-chap,http-pap,mac-cookie name=master
+
+/ip hotspot
+add address-pool=hs-pool-6 disabled=no interface=hotspot name=masterwifi \
+    profile=master
+/ip hotspot user profile
+set [ find default=yes ] name=admin parent-queue="3.USER HOTSPOT&RUMAHAN" \
+    shared-users=3
+add name=family on-login=":local datetime [/system clock get date];\r\
+    \n:local timedate [/system clock get time];\r\
+    \n/queue simple add max-limit=2M/2M name=\"\$address\" comment=(\"user_hot\
+    spot\") parent=\"3.USER HOTSPOT&RUMAHAN\" \\ target=\$address\r\
+    \n" on-logout="/queue simple remove [find name=\"\$address\"] ;\r\
+    \n" parent-queue="3.USER HOTSPOT&RUMAHAN" rate-limit=2M/2M shared-users=5
+
+/ip hotspot user
+add name=scatternet password=scatternet
+add name=family password=family profile=family

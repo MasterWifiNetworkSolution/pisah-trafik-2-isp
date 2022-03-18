@@ -1,0 +1,4 @@
+/ip dhcp-server
+add address-pool=hs-pool-masterwifi disabled=no interface=hotspot lease-time=1h name=\
+    dhcpHospot
+add address-pool=dhcp_pcmasterwifi disabled=no interface=ether3-PC name=dhcpPC

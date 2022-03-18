@@ -1,0 +1,4 @@
+/ip firewall address-list
+add address=192.168.1.0/24 list="IP LOCAL"
+add address=192.168.10.0/24 list="IP LOCAL"
+add address=20.20.20.0/24 list="IP LOCAL"

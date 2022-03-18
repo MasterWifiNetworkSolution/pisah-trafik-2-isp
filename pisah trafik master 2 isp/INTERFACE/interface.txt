@@ -1,0 +1,6 @@
+/interface ethernet
+set [ find default-name=ether1 ] name=ether1-UMUM
+set [ find default-name=ether2 ] name=ether2-GAME
+set [ find default-name=ether3 ] name=ether3-PC
+set [ find default-name=ether4 ] name=ether4-Hotspot
+set [ find default-name=ether5 ] name=ether5-Hotspot

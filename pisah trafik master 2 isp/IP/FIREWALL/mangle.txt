@@ -1,0 +1,51 @@
+/ip firewall mangle
+add action=mark-connection chain=postrouting comment="TOTAL ALL" \
+    connection-mark="!PORT SELAIN PORT UMUM ( GAME )" new-connection-mark=\
+    "TOTAL ALL" packet-mark="!ICMP DOWN" passthrough=yes
+add action=mark-packet chain=forward connection-mark="TOTAL ALL" \
+    in-interface=ether1-UMUM new-packet-mark="DOWNLOAD ALL" passthrough=\
+    yes
+add action=mark-packet chain=forward connection-mark="TOTAL ALL" \
+    new-packet-mark="UPLUAD ALL" out-interface=ether1-UMUM passthrough=yes
+add action=mark-connection chain=postrouting comment=GAME dst-address-list=\
+    "IP GAME ONLINE" new-connection-mark="PORT SELAIN PORT UMUM ( GAME )" \
+    passthrough=yes
+add action=mark-packet chain=forward connection-mark=\
+    "PORT SELAIN PORT UMUM ( GAME )" in-interface=ether2-GAME \
+    new-packet-mark="PORT SELAIN PORT UMUM(GAME) DOWN" passthrough=yes
+add action=mark-packet chain=forward connection-mark=\
+    "PORT SELAIN PORT UMUM ( GAME )" new-packet-mark=\
+    "PORT SELAIN PORT UMUM(GAME) UP" out-interface=ether2-GAME \
+    passthrough=yes
+add action=mark-connection chain=postrouting comment=\
+    "MASUKAN PORT GAME KE TRAFICK BERAT JIKA 200k-999M" connection-mark=\
+    "PORT SELAIN PORT UMUM ( GAME )" connection-rate=200k-999M \
+    new-connection-mark="PORT BERAT" passthrough=yes
+add action=mark-packet chain=forward connection-mark="PORT BERAT" \
+    in-interface=ether1-UMUM new-packet-mark="PORT BERAT DOWN" \
+    passthrough=yes
+add action=mark-packet chain=forward connection-mark="PORT BERAT" \
+    new-packet-mark="PORT BERAT UP" out-interface=ether2-GAME passthrough=\
+    yes
+add action=mark-connection chain=postrouting comment=\
+    "KEMBALIKAN PORT BERAT KE GAME JIKA TRAFICK 0K-200K" connection-mark=\
+    "PORT BERAT" connection-rate=0-200k new-connection-mark=\
+    "PORT SELAIN PORT UMUM ( GAME )" passthrough=yes
+add action=mark-connection chain=postrouting comment=icmp \
+    new-connection-mark=ICMP passthrough=yes protocol=icmp
+add action=mark-packet chain=forward connection-mark=ICMP in-interface=\
+    ether1-UMUM new-packet-mark="ICMP DOWN" passthrough=yes
+add action=mark-packet chain=forward connection-mark=ICMP new-packet-mark=\
+    "ICMP UP" out-interface=ether1-UMUM passthrough=yes
+add action=mark-connection chain=postrouting comment=SOSMED dst-address-list=\
+    sosmed new-connection-mark=SOSMED passthrough=yes
+add action=mark-packet chain=forward connection-mark=SOSMED in-interface=\
+    ether1-UMUM new-packet-mark="SOSMED DOWN" passthrough=yes
+add action=mark-packet chain=forward connection-mark=SOSMED new-packet-mark=\
+    "SOSMED UP" out-interface=ether1-UMUM passthrough=yes
+add action=mark-connection chain=postrouting comment=YOUTUBE \
+    dst-address-list=youtube.com new-connection-mark=YT passthrough=yes
+add action=mark-packet chain=forward connection-mark=YT in-interface=\
+    ether1-UMUM new-packet-mark="YOUTUBE DOWN" passthrough=yes
+add action=mark-packet chain=forward connection-mark=YT new-packet-mark=\
+    "YOUTUBE UP" out-interface=ether1-UMUM passthrough=yes

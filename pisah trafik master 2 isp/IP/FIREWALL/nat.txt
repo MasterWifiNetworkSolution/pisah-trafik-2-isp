@@ -1,0 +1,9 @@
+/ip firewall nat
+add action=passthrough chain=unused-hs-chain comment=\
+    "place hotspot rules here" disabled=yes
+add action=masquerade chain=srcnat comment="masquerade hotspot network" \
+    src-address=20.20.20.0/24
+add action=masquerade chain=srcnat out-interface=ether1-UMUM
+add action=masquerade chain=srcnat out-interface=ether2-GAME
+add action=masquerade chain=srcnat src-address=192.168.10.0/24
+add action=masquerade chain=srcnat out-interface=*8

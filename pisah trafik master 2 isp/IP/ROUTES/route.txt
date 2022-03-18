@@ -1,0 +1,6 @@
+/ip route
+add check-gateway=ping distance=2 gateway=192.168.9.1 routing-mark=GAME
+add check-gateway=ping distance=1 gateway=192.168.1.1 routing-mark=BERAT
+add check-gateway=ping distance=2 gateway=192.168.9.1 routing-mark=ICMP
+add check-gateway=ping distance=1 gateway=192.168.1.1
+add check-gateway=ping distance=2 gateway=192.168.9.1

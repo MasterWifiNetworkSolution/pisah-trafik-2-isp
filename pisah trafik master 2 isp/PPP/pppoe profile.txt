@@ -1,0 +1,3 @@
+/ppp profile
+add local-address=pppoe name=rumahan parent-queue="3.USER HOTSPOT&RUMAHAN" \
+    rate-limit=4M/4M remote-address=pppoe
